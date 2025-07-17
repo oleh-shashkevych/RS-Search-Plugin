@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="search.css">
+</head>
+
+<body>
+    <div class="search-engine-container">
+        <h2 class="search-title">דגם השראה</h2>
+        <form id="property-search-form">
+
+            <div id="deal-type-select" class="form-group custom-select-container">
+                <div class="select-trigger">
+                    סוג עיסקה
+                    <svg class="select-arrow" viewBox="0 0 10 6" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1L5 5L9 1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="options-container">
+                    <label class="option"><input type="checkbox" value="sale"> קניה</label>
+                    <label class="option"><input type="checkbox" value="rent"> השכרה</label>
+                </div>
+            </div>
+
+            <div id="area-select" class="form-group custom-select-container">
+                <div class="select-trigger">
+                    בחר אזור
+                    <svg class="select-arrow" viewBox="0 0 10 6" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1L5 5L9 1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="options-container">
+                    <label class="option"><input type="checkbox" value="tel-aviv-center"> תל אביב מרכז</label>
+                    <label class="option"><input type="checkbox" value="tel-aviv-north"> תל אביב הצפון החדש</label>
+                    <label class="option"><input type="checkbox" value="ramat-hasharon"> רמת השרון</label>
+                    <label class="option"><input type="checkbox" value="givatayim"> גבעתיים</label>
+                    <label class="option"><input type="checkbox" value="other"> אחר</label>
+                </div>
+            </div>
+
+            <div id="property-type-select" class="form-group custom-select-container">
+                <div class="select-trigger">
+                    בחר סוג נכס
+                    <svg class="select-arrow" viewBox="0 0 10 6" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1L5 5L9 1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="options-container">
+                    <label class="option"><input type="checkbox" value="apartment"> דירה</label>
+                    <label class="option"><input type="checkbox" value="penthouse"> פנטהאוז</label>
+                    <label class="option"><input type="checkbox" value="private-house"> בית פרטי</label>
+                    <label class="option"><input type="checkbox" value="commercial"> שטחי מסחר</label>
+                    <label class="option"><input type="checkbox" value="other"> אחר</label>
+                </div>
+            </div>
+            
+            <div class="form-group range-group">
+                <label for="rooms-from">מספר חדרים</label>
+                <div class="range-inputs">
+                    <input type="number" id="rooms-from" name="rooms-from" placeholder="מ-" min="1">
+                    <span>עד</span>
+                    <input type="number" id="rooms-to" name="rooms-to" placeholder="עד" min="1">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="price-max">מחיר מקסימלי בש”ח</label>
+                <input type="number" id="price-max" name="price-max" placeholder="0">
+            </div>
+            <button type="submit" class="submit-btn">מצא לי נכס!</button>
+        </form>
+    </div>
+    <script src="search.js"></script>
+</body>
+
+</html>
