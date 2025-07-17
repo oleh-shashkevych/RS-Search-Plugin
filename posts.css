@@ -17,10 +17,10 @@
 }
 
 .posts-wrapper {
-    height: 250px; /* Фиксированная высота */
-    overflow-y: auto; /* Скрываем стандартный скроллбар, но позволяем прокрутку */
+    height: 250px; /* Fixed height */
+    overflow-y: auto; /* Allow scrolling */
     position: relative;
-    /* Убираем скроллбар для чистоты вида, так как он управляется JS */
+    /* Hide scrollbar for a cleaner look, as it's controlled by JS */
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
 }

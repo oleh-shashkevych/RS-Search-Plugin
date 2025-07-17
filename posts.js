@@ -1,39 +1,39 @@
 document.addEventListener('DOMContentLoaded', () => {
     const postsWrapper = document.querySelector('.posts-wrapper');
-    if (!postsWrapper) return; // Выходим, если элемент не найден
+    if (!postsWrapper) return; // Exit if the element is not found
 
     const posts = postsWrapper.querySelectorAll('.post');
     let currentPostIndex = 0;
-    const scrollInterval = 3000; // Интервал прокрутки в миллисекундах (3 секунды)
+    const scrollInterval = 3000; // Scroll interval in milliseconds (3 seconds)
 
-    // Назначаем обработчики кликов на каждый пост
+    // Assign click handlers to each post
     posts.forEach(post => {
         post.addEventListener('click', () => {
-            // Замени 'property.html' на реальный URL
+            // Replace 'property.html' with the actual URL
             window.location.href = 'property.html';
         });
     });
 
-    // Функция для прокрутки
+    // Function to handle scrolling
     function scrollToNextPost() {
-        // Переходим к следующему посту
+        // Move to the next post
         currentPostIndex++;
 
-        // Если дошли до конца, возвращаемся к первому посту
+        // If it's the end of the list, go back to the first post
         if (currentPostIndex >= posts.length) {
             currentPostIndex = 0;
         }
 
         const nextPost = posts[currentPostIndex];
 
-        // Плавно прокручиваем контейнер к верхней границе следующего поста
+        // Smoothly scroll the container to the top of the next post
         postsWrapper.scrollTo({
             top: nextPost.offsetTop,
             behavior: 'smooth'
         });
     }
 
-    // Запускаем автоматическую прокрутку, если постов больше одного
+    // Start automatic scrolling if there is more than one post
     if (posts.length > 1) {
         setInterval(scrollToNextPost, scrollInterval);
     }

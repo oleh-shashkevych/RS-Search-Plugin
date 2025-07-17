@@ -1,5 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    /**
+     * Function to initialize a custom dropdown with checkboxes.
+     * @param {string} containerId - The ID of the main container for the select component.
+     */
     function initializeCustomSelect(containerId) {
         const container = document.getElementById(containerId);
         if (!container) return;
@@ -7,20 +11,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const trigger = container.querySelector('.select-trigger');
         const options = container.querySelector('.options-container');
         const checkboxes = container.querySelectorAll('input[type="checkbox"]');
-        const originalText = trigger.textContent;
+        const originalText = trigger.querySelector('svg').previousSibling.textContent.trim();
         
-        // --- ОБНОВЛЕННАЯ ЛОГИКА ---
         trigger.addEventListener('click', (e) => {
             e.stopPropagation();
             const isOpen = options.style.display === 'block';
 
-            // Закрываем все другие списки
+            // Close all other dropdowns
             document.querySelectorAll('.custom-select-container').forEach(c => {
                 c.querySelector('.options-container').style.display = 'none';
-                c.classList.remove('is-open'); // Убираем класс у всех
+                c.classList.remove('is-open');
             });
             
-            // Переключаем текущий список и класс для анимации стрелки
+            // Toggle the current dropdown and the class for the arrow animation
             if (isOpen) {
                 options.style.display = 'none';
                 container.classList.remove('is-open');
@@ -30,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         
+        // Stop click propagation from the options container to prevent it from closing.
         options.addEventListener('click', (e) => {
             e.stopPropagation();
         });
@@ -40,24 +44,30 @@ document.addEventListener('DOMContentLoaded', () => {
                     .filter(i => i.checked)
                     .map(i => i.parentElement.innerText.trim());
 
+                // Clear the trigger text content before adding new text or the SVG
+                trigger.childNodes.forEach(node => {
+                    if (node.nodeType === 3) { // Node.TEXT_NODE
+                        node.textContent = '';
+                    }
+                });
+
                 if (selected.length === 0) {
-                    trigger.textContent = originalText;
+                    trigger.prepend(originalText);
                 } else if (selected.length > 2) {
-                    trigger.textContent = `${selected.length} נבחרו`;
+                    trigger.prepend(`${selected.length} selected`);
                 } else {
-                    trigger.textContent = selected.join(', ');
+                    trigger.prepend(selected.join(', '));
                 }
             });
         });
     }
 
-    // Инициализируем все кастомные селекты
+    // Initialize all custom selects
     initializeCustomSelect('deal-type-select');
     initializeCustomSelect('area-select');
     initializeCustomSelect('property-type-select');
 
-    // --- ОБНОВЛЕННАЯ ЛОГИКА ---
-    // Закрываем все списки и убираем класс is-open
+    // Close all dropdowns when clicking outside of them
     window.addEventListener('click', () => {
         document.querySelectorAll('.custom-select-container').forEach(c => {
             c.querySelector('.options-container').style.display = 'none';
@@ -65,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Обработка отправки формы (без изменений)
+    // Handle form submission
     const searchForm = document.getElementById('property-search-form');
     searchForm.addEventListener('submit', (event) => {
         event.preventDefault();
@@ -84,6 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
             maxPrice: document.getElementById('price-max').value
         };
 
-        console.log('Данные для отправки на сервер:', formData);
+        console.log('Data to be sent to the server:', formData);
     });
 });

@@ -43,12 +43,12 @@
     cursor: pointer;
     text-align: right;
     box-sizing: border-box;
-    display: flex; /* Для выравнивания текста и стрелки */
+    display: flex;
     align-items: center;
-    justify-content: space-between; /* Текст справа, стрелка слева */
+    justify-content: space-between;
 }
 
-/* --- НОВЫЕ СТИЛИ ДЛЯ SVG-СТРЕЛКИ --- */
+/* SVG Arrow Styles */
 .select-arrow {
     width: 12px;
     height: 12px;
@@ -60,11 +60,10 @@
     fill: none;
 }
 
-/* --- ОБНОВЛЕННАЯ АНИМАЦИЯ ПОВОРОТА --- */
+/* Arrow rotation on open */
 .custom-select-container.is-open .select-arrow {
     transform: rotate(180deg);
 }
-
 
 .options-container {
     display: none;
@@ -79,7 +78,7 @@
     max-height: 150px;
     overflow-y: auto;
     
-    /* Стили для скроллбара */
+    /* Scrollbar Styles */
     scrollbar-width: thin;
     scrollbar-color: #d9534f #f2f2f2;
 }
